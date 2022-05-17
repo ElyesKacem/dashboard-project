@@ -19,6 +19,9 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Home from './Home/Home';
 import Contact from '../Menu/Contact/Contact';
+import Requests from '../requests/Requests';
+import Request from '../requests/Request';
+import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 const drawerWidth = 220;
 
@@ -130,14 +133,32 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Requests', 'Clients', 'Workers'].map((text, index) => (
-            <ListItem button key={text}>
+          <Router>
+            <ListItem button onClick={() => this.forceUpdate()} key='home' component={Link} to="/Home">
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <InboxIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary='home' />
             </ListItem>
-          ))}
+            <ListItem button onClick={() => this.forceUpdate()} key='Requests' component={Link} to="/Requests">
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary='Requests' />
+            </ListItem>
+          </Router>
+          <ListItem button key='Clients'>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary='Clients' />
+          </ListItem>
+          <ListItem button key='Workers'>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary='Workers' />
+          </ListItem>
         </List>
         <Divider />
         <List>
@@ -153,7 +174,16 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Home />
+        <Router>
+          <Routes>
+            <Route path="/"/>
+            <Route path="/Home" element={<Home/>}/>
+            <Route path="/Requests" element={<Requests/>}/>
+            <Route path="/Request/:id" element={<Request/>}/>
+          </Routes>
+        </Router>
+        {/*<Home />
+        <Contact/>*/}
       </Box>
     </Box>
   );

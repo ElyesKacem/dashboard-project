@@ -3,6 +3,7 @@ import React from 'react'
 import { LineChart } from '../../Chart/LineChart/LineChart';
 import HomeCards from './HomeCards/HomeCards';
 const Home = () => {
+
     return ( <React.Fragment>
        
     <Grid container spacing={2}>
