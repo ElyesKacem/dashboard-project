@@ -40,7 +40,6 @@ const columns = [
 function createData(id,name, address, phone, date,status) {
   return {id, name, address, phone, date, status };
 }
-
 const rows = [
     createData(1,'hama', 'nahj othman', 574822, '05/11/2022','new'),
     createData(2,'hama', 'nahj othman', 574822, '05/11/2022','pending'),
@@ -60,6 +59,18 @@ const rows = [
 ];
 
 export default function Requests() {
+    const [Request,setRequests]=React.useState(null);
+    React.useEffect(()=>{
+        fetch("http://localhost:8000/requests")
+        .then(res =>{
+            res.json();
+            console.log("response",res);
+        })
+        .then((data)=>{
+            console.log("data",data);
+        })
+    },[]);
+
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
