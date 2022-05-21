@@ -18,36 +18,36 @@ import { color } from '@mui/system';
 
 
 const containerStyle = {
-    width: '500px',
-    height: '500px'
-  };
-  
-  const center = {
-    lat: -3.745,
-    lng: -38.523
-  };
+  width: '500px',
+  height: '500px'
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
 
 function Request(props) {
-    const data = useLocation().state;
-    const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyBhXchlpCEolAoO4Pe4mTV82pnC1t3X4eo"
-      })
-    const [map, setMap] = React.useState(null)
+  const data = useLocation().state;
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyBhXchlpCEolAoO4Pe4mTV82pnC1t3X4eo"
+  })
+  const [map, setMap] = React.useState(null)
 
-    const onLoad = React.useCallback(function callback(map) {
+  const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
     setMap(map)
-    }, [])
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null)
-      }, [])
-    console.log(data)
-    const [Equipe, setEquipe] = React.useState('');
-    const handleChange = (event) => {
-      setEquipe(event.target.value);
-    };
+  }, [])
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+  console.log(data)
+  const [Equipe, setEquipe] = React.useState('');
+  const handleChange = (event) => {
+    setEquipe(event.target.value);
+  };
   return (
     <div>
       <Paper
@@ -92,7 +92,7 @@ function Request(props) {
               </Grid>
               <Box sx={{ minWidth: 120 }}>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
-                { /*<Typography gutterBottom variant="subtitle1" component="div"> Equipe de travail</Typography>*/}
+                  { /*<Typography gutterBottom variant="subtitle1" component="div"> Equipe de travail</Typography>*/}
                   <InputLabel id="demo-simple-select-filled-label" variant="standard" >Equipe de travail</InputLabel>
                   <Select
                     labelId="demo-simple-select-filled-label"
@@ -113,30 +113,30 @@ function Request(props) {
               <Grid item>
                 {
                   (() => {
-                      switch (data.status) {
-                        case "new":
-                          return <Alert variant="filled" severity="warning">
+                    switch (data.status) {
+                      case "new":
+                        return <Alert variant="filled" severity="warning">
                           nouveau
-                          </Alert>
-                        case 'pending':
-                          return <Alert variant="filled" severity="info">
+                        </Alert>
+                      case 'pending':
+                        return <Alert variant="filled" severity="info">
                           en attente
-                          </Alert>
-                        case 'done':
-                          return <Alert variant="filled" severity="success">
+                        </Alert>
+                      case 'done':
+                        return <Alert variant="filled" severity="success">
                           complete
-                          </Alert>
-                        case 'canceled':
-                          return <Alert variant="filled" severity="error">
+                        </Alert>
+                      case 'canceled':
+                        return <Alert variant="filled" severity="error">
                           annule
-                          </Alert>
-                        default:
-                          return <Alert variant="filled" severity="info">
+                        </Alert>
+                      default:
+                        return <Alert variant="filled" severity="info">
                           else
-                          </Alert>
-                      }
+                        </Alert>
                     }
-                    )()
+                  }
+                  )()
                 }
               </Grid>
               <Grid item>
@@ -154,17 +154,17 @@ function Request(props) {
             </Grid>
             <map>
               {isLoaded ? (
-                    <GoogleMap
-                      mapContainerStyle={containerStyle}
-                      center={center}
-                      zoom={10}
-                      onLoad={onLoad}
-                      onUnmount={onUnmount}
-                    >
-                      { /* Child components, such as markers, info windows, etc. */ }
-                      <Marker position={{ lat: center.lat, lng: center.lng }} />
-                    </GoogleMap>
-                ) : <></>}
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={10}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                >
+                  { /* Child components, such as markers, info windows, etc. */}
+                  <Marker position={{ lat: center.lat, lng: center.lng }} />
+                </GoogleMap>
+              ) : <></>}
             </map>
           </Grid>
         </Grid>
@@ -173,7 +173,7 @@ function Request(props) {
 
 
 
-      
+
 
 
   )
