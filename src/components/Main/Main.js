@@ -18,10 +18,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Home from './Home/Home';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import Contact from '../Menu/Contact/Contact';
 import Requests from '../requests/Requests';
 import Request from '../requests/Request';
-import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 const drawerWidth = 220;
 
@@ -107,7 +110,7 @@ export default function MiniDrawer() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar style={{backgroundColor:'#343a40'}}>
+        <Toolbar style={{ backgroundColor: '#343a40' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -136,23 +139,23 @@ export default function MiniDrawer() {
           <Router>
             <ListItem button onClick={() => Home.forceUpdate()} key='home' component={Link} to="/Home">
               <ListItemIcon>
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText primary='home' />
             </ListItem>
             <ListItem button onClick={() => Requests.forceUpdate()} key='Requests' component={Link} to="/Requests">
               <ListItemIcon>
-                <InboxIcon />
+                <ArticleOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary='Requests' />
             </ListItem>
+            <ListItem button onClick={() => this.forceUpdate()} key='Contact' component={Link} to="/Contact">
+              <ListItemIcon>
+                <PersonOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary='Contact' />
+            </ListItem>
           </Router>
-          <ListItem button key='Clients'>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary='Clients' />
-          </ListItem>
           <ListItem button key='Workers'>
             <ListItemIcon>
               <InboxIcon />
@@ -176,10 +179,11 @@ export default function MiniDrawer() {
         <DrawerHeader />
         <Router>
           <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/Home" element={<Home/>}/>
-            <Route path="/Requests" element={<Requests/>}/>
-            <Route path="/Request/:id" element={<Request/>}/>
+            <Route path="/" element={<Home />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/Requests" element={<Requests />} />
+            <Route path="/Request/:id" element={<Request />} />
+            <Route path="/Contact" element={<Contact />} />
           </Routes>
         </Router>
         {/*<Home />
