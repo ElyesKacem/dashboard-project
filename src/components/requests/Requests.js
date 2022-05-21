@@ -118,23 +118,23 @@ export default function Requests() {
                                         {
                                             switch (value) {
                                                 case "new":
-                                                    return <Alert variant="filled" severity="warning">
+                                                    return <Alert variant="standard" severity="info">
                                                     nouveau
                                                     </Alert>
                                                 case 'pending':
-                                                    return <Alert variant="filled" severity="info">
+                                                    return <Alert variant="standard" severity="warning">
                                                     en attente
                                                     </Alert>
                                                 case 'done':
-                                                    return <Alert variant="filled" severity="success">
+                                                    return <Alert variant="standard" severity="success">
                                                     complete
                                                     </Alert>
                                                 case 'canceled':
-                                                    return <Alert variant="filled" severity="error">
+                                                    return <Alert variant="standard" severity="error">
                                                     annule
                                                     </Alert>
                                                 default:
-                                                    return <Alert variant="filled" severity="info">
+                                                    return <Alert variant="standard" severity="info">
                                                     else
                                                     </Alert>
                                             }

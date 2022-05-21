@@ -14,6 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
+import { color } from '@mui/system';
 
 
 const containerStyle = {
@@ -91,10 +92,8 @@ function Request(props) {
               </Grid>
               <Box sx={{ minWidth: 120 }}>
                 <FormControl variant="standard" sx={{ m: 1, minWidth: 200 }}>
-                  <Typography gutterBottom variant="subtitle1" component="div">
-                  Equipe de travail
-                  </Typography>
-                  <InputLabel id="demo-simple-select-filled-label" variant="standard">Equipe de travail</InputLabel>
+                { /*<Typography gutterBottom variant="subtitle1" component="div"> Equipe de travail</Typography>*/}
+                  <InputLabel id="demo-simple-select-filled-label" variant="standard" >Equipe de travail</InputLabel>
                   <Select
                     labelId="demo-simple-select-filled-label"
                     id="demo-simple-select-filled"
@@ -170,31 +169,6 @@ function Request(props) {
           </Grid>
         </Grid>
       </Paper>
-        <div>
-            <label> Nom Client: </label>
-            <span>{data.name}</span>
-        </div>
-        <div>
-            <label>Adresse: </label>
-            <span>{data.address}</span>
-        </div>
-        <div>
-            <label> Telephone:</label>
-            <span>{data.phone}</span>
-        </div>
-        <div>
-            <label> Date de reservation: </label>
-            <span>{data.date}</span>
-        </div>
-
-
-
-
-
-
-
-
-    
     </div>
 
 

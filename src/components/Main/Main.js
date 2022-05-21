@@ -176,7 +176,7 @@ export default function MiniDrawer() {
         <DrawerHeader />
         <Router>
           <Routes>
-            <Route path="/"/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/Home" element={<Home/>}/>
             <Route path="/Requests" element={<Requests/>}/>
             <Route path="/Request/:id" element={<Request/>}/>
