@@ -7,32 +7,33 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Alert } from '@mui/material';
+import { Alert, Typography } from '@mui/material';
 import Request from './Request';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { minHeight } from '@mui/system';
 
 const columns = [
-  { id: 'name', label: 'Nom', minWidth: 170 },
-  { id: 'address', label: 'Adresse', minWidth: 100 },
+  { id: 'name', label: 'Nom', minWidth: 100 },
+  { id: 'address', label: 'Adresse', minWidth: 200},
   {
     id: 'phone',
     label: 'Telephone',
-    minWidth: 170,
-    align: 'right',
+    minWidth: 70,
+    align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'date',
     label: 'Date',
-    minWidth: 170,
-    align: 'right',
+    minWidth: 70,
+    align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'status',
-    label: 'statut',
-    minWidth: 170,
-    align: 'right',
+    label: 'Statut',
+    minWidth: 70,
+    align: 'center',
     format: (value) => value.toFixed(2),
   },
 ];
@@ -41,12 +42,12 @@ function createData(id,name, address, phone, date,status) {
   return {id, name, address, phone, date, status };
 }
 const rows = [
-    createData(1,'hama', 'nahj othman', 574822, '05/11/2022','new'),
+    createData(1,'hama', 'nsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla parisunt in culpa qui officia deserunt mollit anim id est laborum.', 574822, '05/11/2022','new'),
     createData(2,'hama', 'nahj othman', 574822, '05/11/2022','pending'),
-    createData(3,'hama', 'nahj othman', 574822, '05/11/2022','new'),
+    createData(3,'hama', ' quis nostrud exerte velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. othman', 574822, '05/11/2022','new'),
     createData(4,'hama', 'nahj othman', 574822, '05/11/2022','canceled'),
     createData(5,'hama', 'nahj othman', 574822, '05/11/2022','new'),
-    createData(6,'hama', 'nahj othman', 574822, '05/11/2022','pending'),
+    createData(6,'hama', 'e irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. othman', 574822, '05/11/2022','pending'),
     createData(7,'hama', 'nahj othman', 574822, '05/11/2022','pending'),
     createData(8,'hama', 'nahj othman', 574822, '05/11/2022','done'),
     createData(9,'hama', 'nahj othman', 574822, '05/11/2022','new'),
@@ -87,15 +88,16 @@ export default function Requests() {
         <div>
             <h2>Requete client</h2>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                <TableContainer sx={{ maxHeight: 440 }}>
+                <TableContainer sx={{ maxHeight: 480 }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                     <TableRow>
                         {columns.map((column) => (
                         <TableCell
+
                             key={column.id}
                             align={column.align}
-                            style={{ minWidth: column.minWidth }}
+                            style={{ width: column.minWidth, fontWeight: 'bold',fontSize: 20 }}
                         >
                             {column.label}
                         </TableCell>
@@ -112,7 +114,8 @@ export default function Requests() {
                             {columns.map((column) => {
                                 const value = row[column.id];
                                 return (
-                                <TableCell key={column.id} align={column.align}>
+                                <TableCell under key={column.id} align={column.align}>
+                                    
                                     {(() => {
                                         if(column.id ==='status')
                                         {
@@ -131,7 +134,7 @@ export default function Requests() {
                                                     </Alert>
                                                 case 'canceled':
                                                     return <Alert variant="standard" severity="error">
-                                                    annule
+                                                    annulée
                                                     </Alert>
                                                 default:
                                                     return <Alert variant="standard" severity="info">

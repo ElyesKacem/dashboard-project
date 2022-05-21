@@ -134,13 +134,13 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           <Router>
-            <ListItem button onClick={() => this.forceUpdate()} key='home' component={Link} to="/Home">
+            <ListItem button onClick={() => Home.forceUpdate()} key='home' component={Link} to="/Home">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary='home' />
             </ListItem>
-            <ListItem button onClick={() => this.forceUpdate()} key='Requests' component={Link} to="/Requests">
+            <ListItem button onClick={() => Requests.forceUpdate()} key='Requests' component={Link} to="/Requests">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
