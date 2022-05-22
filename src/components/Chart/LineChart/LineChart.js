@@ -66,6 +66,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export function LineChart() {
   return (
     <Item>
+
       <Line options={options} data={data} />
 
     </Item>

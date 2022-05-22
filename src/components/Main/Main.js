@@ -1,4 +1,6 @@
 import * as React from 'react';
+import EmailIcon from '@mui/icons-material/Email';
+import WorkIcon from '@mui/icons-material/Work';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -17,6 +19,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Home from './Home/Home';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
@@ -25,6 +28,7 @@ import Contact from '../Menu/Contact/Contact';
 import Requests from '../requests/Requests';
 import Request from '../requests/Request';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Mail from '../mail/mail';
 
 const drawerWidth = 220;
 
@@ -156,23 +160,32 @@ export default function MiniDrawer() {
               <ListItemText primary='Contact' />
             </ListItem>
           </Router>
-          <ListItem button key='Workers'>
+          <ListItem button
+          // onClick={() => this.forceUpdate()} key='Mail' component={Link} to="/Mail"
+          >
             <ListItemIcon>
-              <InboxIcon />
+              <EmailIcon />
             </ListItemIcon>
-            <ListItemText primary='Workers' />
+            <ListItemText primary='Mail' />
           </ListItem>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
+          <Router>
+
+            <ListItem button key='Workers'>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <WorkIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary='Workers' />
             </ListItem>
-          ))}
+            <ListItem button key='Logout'>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary='Logout' />
+            </ListItem>
+          </Router>
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
@@ -184,6 +197,7 @@ export default function MiniDrawer() {
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Request/:id" element={<Request />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Mail" element={<Mail />} />
           </Routes>
         </Router>
         {/*<Home />
