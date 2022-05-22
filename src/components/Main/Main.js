@@ -17,8 +17,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Home from './Home/Home';
 import HomeIcon from '@mui/icons-material/Home';
@@ -29,7 +27,7 @@ import Requests from '../requests/Requests';
 import Request from '../requests/Request';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Mails from '../mail/Mails';
-import Mail from '../mail/Mail';
+import Mail from '../mail/mail';
 import Login from '../Login/login';
 import Worker from '../Worker/Workers';
 
