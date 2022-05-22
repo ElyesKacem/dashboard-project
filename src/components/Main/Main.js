@@ -31,6 +31,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Mails from '../mail/Mails';
 import Mail from '../mail/Mail';
 import Login from '../Login/login';
+import Worker from '../Worker/Workers';
 
 const drawerWidth = 220;
 
@@ -130,7 +131,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Dashboard Project
+            Home
           </Typography>
         </Toolbar>
       </AppBar>
@@ -141,8 +142,8 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          <Router>
+        <Router>
+          <List>
             <ListItem button onClick={() => Home.forceUpdate()} key='home' component={Link} to="/Home">
               <ListItemIcon>
                 <HomeIcon />
@@ -167,12 +168,14 @@ export default function MiniDrawer() {
               </ListItemIcon>
               <ListItemText primary='Mail' />
             </ListItem>
-          </Router>
-        </List>
-        <Divider />
-        <List>
-          <Router>
-            <ListItem button key='Workers'>
+          </List>
+          <Divider />
+          <List>
+
+
+            <ListItem button key='Worker'
+              onClick={() => this.forceUpdate()} component={Link} to="/Worker"
+            >
               <ListItemIcon>
                 <WorkIcon />
               </ListItemIcon>
@@ -185,8 +188,8 @@ export default function MiniDrawer() {
               </ListItemIcon>
               <ListItemText primary='Logout' />
             </ListItem>
-          </Router>
-        </List>
+          </List>
+        </Router>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
@@ -200,6 +203,7 @@ export default function MiniDrawer() {
             <Route path="/Mails" element={<Mails />} />
             <Route path="/Mail/:id" element={<Mail />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Worker" element={<Worker />} />
           </Routes>
         </Router>
         {/*<Home />

@@ -29,10 +29,10 @@ const Home = () => {
             label: 'Utilisateurs',
             data: [10, 20, 30, 20],
             backgroundColor: [
-                'Red',
-                '#E38627',
-                '#C13C37',
-                '#6A2135'
+                '#28a745',
+                '#17a2b8',
+                '#ffc107',
+                '#dc3545'
             ]
         },
         ],
@@ -52,9 +52,9 @@ const Home = () => {
             label: 'Utilisateurs',
             data: [10, 20, 30],
             backgroundColor: [
-                'blue',
-                'red',
-                'green'
+                '#28a745',
+                '#ffc107',
+                '#dc3545'
             ]
         },
         ],

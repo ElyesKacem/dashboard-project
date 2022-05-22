@@ -11,18 +11,9 @@ function App() {
     // className="App"
     >
 
-
-
-      {/* <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<MiniDrawer />} />
-        </Routes>
-      </Router> */}
-
-
       {/*<Login></Login>*/}
       <MiniDrawer />
+
 
     </div>
   );
