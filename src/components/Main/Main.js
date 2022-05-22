@@ -28,7 +28,9 @@ import Contact from '../Menu/Contact/Contact';
 import Requests from '../requests/Requests';
 import Request from '../requests/Request';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Mail from '../mail/mail';
+import Mails from '../mail/Mails';
+import Mail from '../mail/Mail';
+import Login from '../Login/login';
 
 const drawerWidth = 220;
 
@@ -159,27 +161,25 @@ export default function MiniDrawer() {
               </ListItemIcon>
               <ListItemText primary='Contact' />
             </ListItem>
+            <ListItem button onClick={() => this.forceUpdate()} key='Mails' component={Link} to="/Mails">
+              <ListItemIcon>
+                <EmailIcon />
+              </ListItemIcon>
+              <ListItemText primary='Mail' />
+            </ListItem>
           </Router>
-          <ListItem button
-          // onClick={() => this.forceUpdate()} key='Mail' component={Link} to="/Mail"
-          >
-            <ListItemIcon>
-              <EmailIcon />
-            </ListItemIcon>
-            <ListItemText primary='Mail' />
-          </ListItem>
         </List>
         <Divider />
         <List>
           <Router>
-
             <ListItem button key='Workers'>
               <ListItemIcon>
                 <WorkIcon />
               </ListItemIcon>
               <ListItemText primary='Workers' />
             </ListItem>
-            <ListItem button key='Logout'>
+
+            <ListItem button onClick={() => this.forceUpdate()} key='Logout' component={Link} to="/Login">
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
@@ -197,7 +197,9 @@ export default function MiniDrawer() {
             <Route path="/Requests" element={<Requests />} />
             <Route path="/Request/:id" element={<Request />} />
             <Route path="/Contact" element={<Contact />} />
-            <Route path="/Mail" element={<Mail />} />
+            <Route path="/Mails" element={<Mails />} />
+            <Route path="/Mail/:id" element={<Mail />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
         </Router>
         {/*<Home />
