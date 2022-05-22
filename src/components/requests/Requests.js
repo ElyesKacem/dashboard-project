@@ -60,16 +60,16 @@ const rows = [
 ];
 
 export default function Requests() {
-    const [Request,setRequests]=React.useState(null);
+    const [Requests,setRequests]=React.useState(null);
     React.useEffect(()=>{
         fetch("http://localhost:8000/requests")
-        .then(res =>{
-            res.json();
-            console.log("response",res);
-        })
-        .then((data)=>{
-            console.log("data",data);
-        })
+            .then(res =>{
+                return res.json();
+            
+            })
+            .then((data)=>{
+                console.log("data",data);
+            })
     },[]);
 
     const [page, setPage] = React.useState(0);
