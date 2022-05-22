@@ -11,10 +11,9 @@ function App() {
     // className="App"
     >
 
+
       {/*<Login></Login>*/}
       <MiniDrawer />
-
-
     </div>
   );
 }

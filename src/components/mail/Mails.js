@@ -11,6 +11,8 @@ import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import { maxHeight } from '@mui/system';
 import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { AlignHorizontalCenter } from '@mui/icons-material';
+import Divider from '@mui/material/Divider';
 
 export default function Mails() {
   const [checked, setChecked] = React.useState([1]);
@@ -44,6 +46,13 @@ export default function Mails() {
 
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+      <ListItem> 
+        <ListItemText primary="Nom" primaryTypographyProps={{ fontSize:20, fontWeight: 'bold', align:'left'}} />
+        <ListItemText primary="Email" primaryTypographyProps={{fontSize:20, fontWeight: 'bold', align:'left'}} />
+        <ListItemText primary="Message"  primaryTypographyProps={{fontSize:20, fontWeight: 'bold', align:'left'}}/>
+        <ListItemText primary="Date"  primaryTypographyProps={{fontSize:20, fontWeight: 'bold', align:'center'}}/>
+      </ListItem>
+      <Divider />
       {rows.map((row) => {
         const labelId = `checkbox-list-label-${row.id}`;
 
@@ -58,19 +67,11 @@ export default function Mails() {
             disablePadding
           >
             <ListItemButton role={undefined} onClick={handleToggle(row.id)} dense>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(row.id) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText primary={row.name} />
-              <ListItemText primary={row.email} />
-              <ListItemText primary={'Message:'+row.text} primaryTypographyProps={{ style: { maxWidth:340, maxHeight:20, overflow: 'hidden', textOverflow: 'ellipsis' } }} />
-              <ListItemText primary={row.date} />
+              
+              <ListItemText primary={row.name}/>
+              <ListItemText primary={row.email}/>
+              <ListItemText primary={row.text} primaryTypographyProps={{ style: { maxWidth:340, maxHeight:20, overflow: 'hidden', textOverflow: 'ellipsis' } }} />
+              <ListItemText primary={row.date} primaryTypographyProps={{align:'center'}}/>
             </ListItemButton>
           </ListItem>
         );
