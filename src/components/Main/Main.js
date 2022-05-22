@@ -131,7 +131,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Home
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -148,7 +148,7 @@ export default function MiniDrawer() {
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary='home' />
+              <ListItemText primary='Dashboard' />
             </ListItem>
             <ListItem button onClick={() => Requests.forceUpdate()} key='Requests' component={Link} to="/Requests">
               <ListItemIcon>
