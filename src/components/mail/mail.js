@@ -1,17 +1,14 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import ButtonBase from '@mui/material/ButtonBase';
-import Typography from '@mui/material/Typography';
-import { Alert, Button, Dialog } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import FormHelperText from '@mui/material/FormHelperText';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { lightGreen } from '@mui/material/colors';
 import { useLocation } from "react-router-dom";
 
 import ReponseMail from '../Dialog/ReponseMail';
+import Divider from '@mui/material/Divider';
+import { Container } from '@mui/material';
 
 function Mail() {
     const data = useLocation().state;
@@ -28,54 +25,62 @@ function Mail() {
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
             }}
         >
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm container direction='column'>
-                    <Grid item xs container direction='row' spacing={2}>
-                        <Grid item xs>
-                            <Typography gutterBottom variant="subtitle1" component="div">
-                                Nom Client:
-                            </Typography>
-                            <Typography gutterBottom variant="h6" component="div">
-                                {data.name}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs>
-                            <Typography gutterBottom variant="subtitle1" component="div">
-                                Date d'email:
-                            </Typography>
-                            <Typography gutterBottom variant="h6" component="div">
-                                {data.date}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs container direction='row' spacing={2}>
-                        <Grid item xs>
-                            <Typography gutterBottom variant="subtitle1" component="div">
-                                Email Client:
-                            </Typography>
-                            <Typography gutterBottom variant="h6" component="div">
-                                {data.email}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs container direction='row' spacing={2}>
-                        <Grid item xs>
-                            <Typography gutterBottom variant="h6" component="div">
-                                Message:
-                            </Typography>
-                            <Typography gutterBottom variant="subtitle1" component="div">
-                                {data.text}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs container direction='row' spacing={2}>
-                        <Grid item xs>
-                            <ReponseMail title='Repondre' style={{ backgroundColor: '#33bc33', color: 'white', position: 'absolute', right: 30, bottom: 180 }} variant="outlined"></ReponseMail>
-                        </Grid>
-                    </Grid>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
+                <div>
+                    <Stack direction="row" spacing={2}>
 
-                </Grid>
-            </Grid>
+                        <Avatar sx={{ bgcolor: lightGreen[500], height: 50, width: 50, fontSize: 30, textTransform: 'capitalize' }}>{data.name[0]}</Avatar>
+                        <br />
+                        <div>
+
+                            <b>
+                                {data.name}
+
+                            </b>
+                            <br /> {'<'}   {data.email} {'>'}
+
+
+                        </div>
+                    </Stack>
+                </div>
+
+
+
+
+                <div>
+
+                    <div>
+                        <b>
+                            At :
+                        </b>
+                        {data.date}
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <br />
+            <Divider />
+
+
+            <Container container spacing={2}>
+                <br />
+                <br />
+                {data.text}
+
+                <br />
+                <br />
+
+                <br />
+                <br />
+                <ReponseMail title='Répondre' style={{ backgroundColor: '#33bc33', color: 'white', position: 'absolute', right: 30, bottom: 180 }} variant="outlined" />
+            </Container>
         </Paper>
     )
 }

@@ -62,7 +62,7 @@ export default function FormDialog(props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Annuler</Button>
-                    <Button onClick={handleClose}>Modifier</Button>
+                    <Button onClick={handleClose}>Ajouter</Button>
                 </DialogActions>
             </Dialog>
         </div>

@@ -20,12 +20,12 @@ export default function ReponseMail(props) {
 
     return (
         <div>
-            <Button style={{float: 'right', backgroundColor: '#33bc33', color: 'white', textTransform: "none"}} variant="outlined" onClick={handleClickOpen}>
-                Repondre
+            <Button style={{ backgroundColor: '#33bc33', color: 'white', textTransform: "none" }} variant="outlined" onClick={handleClickOpen}>
+                {props.title}
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Repondre</DialogTitle>
-                <DialogContent  style={{width:500,}}>
+                <DialogContent style={{ width: 500, }}>
                     <DialogContentText>
                         Veuillez saisir un message
                     </DialogContentText>
@@ -33,7 +33,7 @@ export default function ReponseMail(props) {
                         id="standard-multiline-static"
                         label="Message"
                         multiline
-                        fullWidth 
+                        fullWidth
                         rows={6}
                         placeholder="Saisir message"
                         variant="standard"
@@ -41,7 +41,7 @@ export default function ReponseMail(props) {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Annuler</Button>
-                    <Button onClick={handleClose}>Modifier</Button>
+                    <Button onClick={handleClose}>Envoyer</Button>
                 </DialogActions>
             </Dialog>
         </div>
