@@ -38,7 +38,7 @@ const columns = [
   },
 ];
 
-function createData(id,name, address, phone, date,status) {
+/*function createData(id,name, address, phone, date,status) {
   return {id, name, address, phone, date, status };
 }
 const rows = [
@@ -57,7 +57,7 @@ const rows = [
     createData(13,'hama', 'nahj othman', 574822, '05/11/2022','pending'),
     createData(14,'hama', 'nahj othman', 574822, '05/11/2022','canceled'),
     createData(15,'hama', 'nahj othman', 574822, '05/11/2022','new'),
-];
+];*/
 
 export default function Requests() {
     const [Requests,setRequests]=React.useState(null);
@@ -69,6 +69,7 @@ export default function Requests() {
             })
             .then((data)=>{
                 console.log("data",data);
+                setRequests(data)
             })
     },[]);
 
@@ -86,6 +87,8 @@ export default function Requests() {
 
     return (
         <div>
+            {Requests &&
+            <div>
             <h2>Requete client</h2>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer sx={{ maxHeight: 480 }}>
@@ -105,11 +108,11 @@ export default function Requests() {
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {rows
+                    {Requests
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => {
                         return (
-                            <TableRow component={Link} to={`/Request/${row.id}`} state={row} hover role="checkbox" tabIndex={-1} key={row.id}>
+                            <TableRow component={Link} to={`/Request/${row.id}`} state={row.id} hover role="checkbox" tabIndex={-1} key={row.id}>
                             {console.log(row.id)}
                             {columns.map((column) => {
                                 const value = row[column.id];
@@ -159,13 +162,14 @@ export default function Requests() {
                 <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
-                count={rows.length}
+                count={Requests.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
+            </div>}
         </div>
     );
 }

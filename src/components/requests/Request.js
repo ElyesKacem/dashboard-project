@@ -15,6 +15,7 @@ import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
 import { color } from '@mui/system';
+import { Rowing } from '@mui/icons-material';
 
 
 const containerStyle = {
@@ -28,7 +29,19 @@ const center = {
 };
 
 function Request(props) {
-  const data = useLocation().state;
+  const id = useLocation().state;
+  const [Request,setRequest]=React.useState(null);
+  console.log(id);
+  React.useEffect(()=>{
+      fetch("http://localhost:8000/requests/"+id)
+          .then(res =>{
+            return res.json();
+          })
+          .then((data)=>{
+            console.log("data",data);
+            setRequest(data)
+          })
+  },[]);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyBhXchlpCEolAoO4Pe4mTV82pnC1t3X4eo"
@@ -43,13 +56,41 @@ function Request(props) {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
-  console.log(data)
-  const [Equipe, setEquipe] = React.useState('');
+  console.log(Request)
+  const [Team, setTeam] = React.useState(0);
+  var status
   const handleChange = (event) => {
-    setEquipe(event.target.value);
+    setTeam(event.target.value);
+    if (event.target.value==0) {
+      status="new";
+    }
+    else
+      status = "pending";
+    const obj = {
+      id:Request.id,
+      name:Request.name,
+      address:Request.address,
+      phone:Request.phone,
+      status: status,
+      team: event.target.value,
+      coordinates:{
+          lat: -3.745,
+          lng: -38.523
+      }
+    };
+    console.log(obj)
+    fetch("http://localhost:8000/requests/" + Request.id, {
+      method: "PUT",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    window.reload()
   };
   return (
     <div>
+      {Request &&
       <Paper
         
         sx={{
@@ -70,25 +111,25 @@ function Request(props) {
                   Nom Client:
                 </Typography>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {data.name}
+                  {Request.name}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
                   Date de reservation:
                 </Typography>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {data.date}
+                  {Request.date}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
                   Telephone:
                 </Typography>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  {data.phone}
+                  {Request.phone}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
                   Adresse:
                 </Typography>
                 <Typography gutterBottom variant="body2">
-                  {data.address}
+                  {Request.address}
                 </Typography>
               </Grid>
               <Box sx={{ minWidth: 120 }}>
@@ -98,10 +139,10 @@ function Request(props) {
                   <Select
                     labelId="demo-simple-select-filled-label"
                     id="demo-simple-select-filled"
-                    value={Equipe}
+                    value={Request.team}
                     onChange={handleChange}
                   >
-                    <MenuItem value="">
+                    <MenuItem value={0}>
                       <em>None</em>
                     </MenuItem>
                     <MenuItem value={1}>foxtrot</MenuItem>
@@ -114,13 +155,13 @@ function Request(props) {
               <Grid item>
                 {
                   (() => {
-                    switch (data.status) {
+                    switch (Request.status) {
                       case "new":
-                        return <Alert variant="filled" severity="warning">
+                        return <Alert variant="filled" severity="info">
                           nouveau
                         </Alert>
                       case 'pending':
-                        return <Alert variant="filled" severity="info">
+                        return <Alert variant="filled" severity="warning">
                           en attente
                         </Alert>
                       case 'done':
@@ -157,19 +198,20 @@ function Request(props) {
               {isLoaded ? (
                 <GoogleMap
                   mapContainerStyle={containerStyle}
-                  center={center}
+                  center={Request.coordinates}
                   zoom={10}
                   onLoad={onLoad}
                   onUnmount={onUnmount}
                 >
                   { /* Child components, such as markers, info windows, etc. */}
-                  <Marker position={{ lat: center.lat, lng: center.lng }} />
+                  <Marker position={{ lat: Request.coordinates.lat, lng: Request.coordinates.lng }} />
                 </GoogleMap>
               ) : <></>}
             </map>
           </Grid>
         </Grid>
       </Paper>
+    }
     </div>
 
 
