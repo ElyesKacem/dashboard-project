@@ -19,8 +19,8 @@
       "date": "20/15/2022",
       "address": "hollywood",
       "phone": 25489982,
-      "status": "new",
-      "team": 0,
+      "status": "pending",
+      "team": 1,
       "coordinates": {
         "lat": -3.745,
         "lng": -38.523
