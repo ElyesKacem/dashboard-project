@@ -205,7 +205,7 @@ function App() {
           <DrawerHeader />
           <Router>
             <Routes>
-            <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
               <Route exact path="/Home" element={<Home />} />
               <Route exact path="/Requests" element={<Requests />} />
               <Route exact path="/Request/:id" element={<Request />} />

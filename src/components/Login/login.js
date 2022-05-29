@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useCallback } from 'react'
-import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,16 +12,19 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import Home from '../Main/Home/Home';
 import App from '../../App';
+
 
 
 const theme = createTheme();
 
 export default function Login() {
-    const clickHandle = ()=>{
-
+    const navigate = useNavigate()
+    const clickHadler = () =>{
+        navigate('/Home')
     }
-
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -80,8 +81,8 @@ export default function Login() {
                                 control={<Checkbox value="remember" color="primary" />}
                                 label="Remember me"
                             />
-                            <Button onClick={clickHandle}
-                                type="submit"
+                            <Button component={Link} to="/" onClick={clickHadler}
+                                //type="submit"
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
